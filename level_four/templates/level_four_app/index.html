@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends "level_four_app/base.html" %}
+
+{% block body_block %}
+       
+        {{ name|upper }}
+        {{ number1|add:"number2" }}
+
+        <br><a href = "{% url 'basicapp:login' %}" > Login </a> <br>
+        <a href = "{% url 'basicapp:user' %}" > User </a>
+        
+{%  endblock  %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+   {% extends "level_four_app/base.html" %}
+
+   {% block body_block %}
+   
+   <div>
+       <a href = "{% url 'basicapp:login' %}" > Login </a> 
+       <br>
+       <a href = "{% url 'basicapp:index' %}" > Home Page </a>
+        </div>    
+        <div>
+                   
+            <table>
+                {% if user_info  %}
+                <thead>
+                       <th> Name </th>
+                       <th> Email </th>
+                       <th> Ph. Number </th>
+                    </thead>
+                    
+                    {% for acc in user_info %}
+                    <tr> 
+                        
+                        <td> {{acc.name}} </td>
+                        <td> {{acc.email}} </td>
+                        <td> {{acc.phone}} </td>
+                    </tr>
+
+                    {% endfor %}
+                    
+                    {% else %}
+                    <p> No records Found </p>
+                    
+                    {% endif %}   
+                    
+                    
+                </table>    
+                
+            </div>   
+            
+            {% endblock  %}
+        
+        
+       
