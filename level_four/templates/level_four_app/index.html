@@ -3,8 +3,8 @@
 
 {% block body_block %}
        
-        {{ name|upper }}
-        {{ number1|add:"number2" }}
+        {{ name|cut:'index' }}
+        {{ number1|add:"92" }}
 
         <br><a href = "{% url 'basicapp:login' %}" > Login </a> <br>
         <a href = "{% url 'basicapp:user' %}" > User </a>
