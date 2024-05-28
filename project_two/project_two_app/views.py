@@ -9,7 +9,7 @@ from .form import BrandNewForm
 
 def index(request):
     my_dict = {
-        'insert_me' : 'Hello i m from views'
+        'insert_me' : 'Hello i m from views',
         'insert_you' : "hey there i am using django"
     }   
     return render (request, 'project_two_app/index.html', context = my_dict)
