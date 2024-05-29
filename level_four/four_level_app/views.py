@@ -24,7 +24,7 @@ def login(request):
         
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return index(request) # from this our url will not change
         
         else :
             print('error')
