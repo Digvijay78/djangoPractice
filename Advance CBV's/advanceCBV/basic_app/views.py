@@ -55,6 +55,7 @@ class SchoolCreateView(CreateView):
 class SchoolUpdateView(UpdateView):
     fields = ['name', 'principal']
     model = School
+    #it automatically connect itself with something school_form.html
 
 
 class SchoolDeleteView(DeleteView):
@@ -62,3 +63,18 @@ class SchoolDeleteView(DeleteView):
     model = School
     success_url = reverse_lazy('basic_app:list')
     template_name = 'basic_app/school_confirm_delete.html'
+
+
+class StudentUpateView(UpdateView):
+    fields = ['name', 'age', 'school']
+    model = Student
+
+
+class StudentDeleteView(DeleteView):
+    context_object_name = 'student'
+    model = Student
+    # success_url = reverse_lazy('basic_app:detail', pk = Student.pk )
+    template_name = 'basic_app/student_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('basic_app:detail', kwargs={'pk': self.object.school.pk})

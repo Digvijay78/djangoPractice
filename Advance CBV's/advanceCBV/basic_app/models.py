@@ -22,5 +22,8 @@ class Student(models.Model):
     age = models.PositiveBigIntegerField()
     school = models.ForeignKey(School, on_delete=models.CASCADE , related_name='students')
 
+    def get_absolute_url(self):
+        return reverse("basic_app:detail", kwargs={"pk": self.pk})
+
     def __str__(self):
         return self.name

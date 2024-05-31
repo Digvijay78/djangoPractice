@@ -4,7 +4,8 @@
 
 {% block body_block  %}
 
-<h1>Wlcome to the School Details page </h1>
+<h1>Welcome to the School Details page </h1>
+
 
 <h2>School Details:</h2>
 <p> Name: {{school_detail.name}}</p>
@@ -16,10 +17,12 @@
    <h3>Students:</h3>
    {% for student in school_detail.students.all %}
       <p>{{student.name}} is {{student.age}} years old </p>
-   {%endfor%}
-
-   <div class="container">
-      <p>  <a class = ' btn btn-warning' href="{% url 'basic_app:update' pk=school_detail.pk %}">Update</a> </p>
+      <p>  <a class = ' btn btn-warning' href="{% url 'basic_app:updateStudent' pk=student.pk %}">Update Student </a> </p> 
+      <p>  <a class = ' btn btn-danger' href="{% url 'basic_app:deleteStudent' pk=student.pk %}">Delete Student</a> </p>
+      {%endfor%}
+      
+      <div class="container">
+      <p>  <a class = ' btn btn-warning' href="{% url 'basic_app:update' pk=school_detail.pk %}">Update School </a> </p>
       <p>  <a class = ' btn btn-danger' href="{% url 'basic_app:delete' pk=school_detail.pk %}">Delete</a> </p>
    </div>
 
