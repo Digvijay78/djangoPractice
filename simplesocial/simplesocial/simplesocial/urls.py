@@ -1,5 +1,5 @@
 """
-URL configuration for mysite project.
+URL configuration for simplesocial project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,13 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , include('blog.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    # path('accounts/logout/' , auth_views.logout_then_login, name = 'logout'),
-
-    path('accounts/logout/' , auth_views.LogoutView.as_view(next_page='/'), name = 'logout'),
+    path('', views.Homepage.as_view() , name = 'home' ),
+    path('accounts', include('accounts.urls' , namespace= "accounts")),
+    path("accounts/", include("django.contrib.auth"))
 ]
